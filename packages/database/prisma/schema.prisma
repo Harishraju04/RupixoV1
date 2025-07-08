@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  userid String @id @default(uuid())
+  email String @unique
+  username String
+  password String
+  phone String @unique
+  onRampTransactions OnRampTransactions[]
+  balance Balance[]
+  sentTransfers p2pTransfer[] @relation(name: "ToUserRelation")
+  receivedTransfers p2pTransfer[] @relation(name: "FromUserRelation")
+
+}
+model OnRampTransactions{
+  id String @id @default(uuid())
+  status OnRampStatus
+  token String @unique
+  provider String
+  amount Int
+  startTime DateTime
+  userid String
+  user User @relation(fields: [userid],references: [userid])
+}
+model Balance{
+  id String @id @default(uuid())
+  userid String @unique
+  amount Int
+  locked Int
+  user User @relation(fields: [userid],references:[userid])
+}
+
+model p2pTransfer{
+  id String @id @default(uuid())
+  amount Int
+  timestamp DateTime
+  fromUserid String
+  toUserid String
+  fromUser User @relation(name: "FromUserRelation",fields: [fromUserid],references: [userid])
+  toUser User @relation(name:"ToUserRelation",fields: [toUserid],references: [userid])
+}
+enum OnRampStatus{
+ Success
+ Failed
+ Processing
+}

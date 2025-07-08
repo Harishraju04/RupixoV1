@@ -4,12 +4,16 @@
   "sideEffects": [
     "**/*.css"
   ],
+  "main": "./dist/index.js",
+ "types": "./dist/index.d.ts",
+
   "files": [
     "dist"
   ],
   "exports": {
-    "./styles.css": "./dist/index.css",
-    "./*": "./dist/*.js"
+    ".": "./dist/index.js",                
+  "./styles.css": "./dist/index.css",    
+  "./*": "./dist/*.js" 
   },
   "license": "MIT",
   "scripts": {
