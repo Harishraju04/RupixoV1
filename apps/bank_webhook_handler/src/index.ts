@@ -7,8 +7,15 @@ app.use(express.json());
 app.use(cors());
 const jwt_secret = "bankApi"; // Ideally use process.env.JWT_SECRET
 
-app.post("/bank_handler", async (req, res) => {
-  const token: string = req.body.token;
+
+app.post("/api/bank/getToken", async (req , res)=>{
+   const userid = req.body.userid;
+   const amount = req.body.amount;
+   const token = jwt.sign({userid,amount},jwt_secret);
+   res.status(200).json({token:token});
+})
+app.put("/api/bank/transfer", async (req, res) => {
+  const token = req.headers["transfer-token"] as string | undefined;
 
   if (!token) {
     res.status(400).json({ msg: "Token missing" });
@@ -63,6 +70,6 @@ app.post("/bank_handler", async (req, res) => {
   }
 });
 
-app.listen(4001, () => {
+app.listen(4000, () => {
   console.log("listening on port 4001");
 });

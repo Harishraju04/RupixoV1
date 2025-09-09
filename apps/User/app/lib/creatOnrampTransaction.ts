@@ -25,7 +25,7 @@ export async function CreateOnrampTransaction(provider:string,amount:number,user
                 amount
             }
         })
-        console.log(res.amount);
+        console.log(token.data.token);
         return{
             token: token.data.token
         }
