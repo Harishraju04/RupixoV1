@@ -1,58 +1,55 @@
-# Turborepo Tailwind CSS starter
+# 💸 Rupixo – Payment Wallet Web Application
 
-This Turborepo starter is maintained by the Turborepo core team.
+Rupixo is a full-stack payment wallet web application that allows users to securely manage their balance, send money to others via phone number, and view transaction history. Designed with a sleek UI and robust backend architecture, Rupixo aims to deliver a modern peer-to-peer payment experience.
 
-## Using this example
+---
 
-Run the following command:
+## 🚀 Features
 
-```sh
-npx create-turbo@latest -e with-tailwind
-```
+- 🔐 **Authentication** using NextAuth.js
+- 💰 **Add Money** to wallet from a linked bank account
+- 🤝 **Send Money** to other users using phone numbers
+- 📄 **Transaction History** with categorized views
+- 🧾 **Real-time Balance Updates** with atomic transactions
+- 📱 **Responsive UI** with reusable components
 
-## What's inside?
+---
 
-This Turborepo includes the following packages/apps:
+## 🧱 Tech Stack
 
-### Apps and Packages
+| Layer           | Technology                                     |
+|----------------|------------------------------------------------|
+| **Frontend**    | Next.js, TypeScript, Tailwind CSS              |
+| **Backend**     | Express.js, Node.js, TypeScript                |
+| **Database**    | PostgreSQL, Prisma ORM                         |
+| **Auth**        | NextAuth.js with JWT                           |
+| **UI Library**  | `@repo/ui` – Custom reusable components        |
+| **Monorepo**    | TurboRepo (optional), PNPM workspaces          |
+| **Hosting**     | Vercel (Frontend), Railway/Render (API/DB)     |
 
-- `docs`: a [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `web`: another [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `ui`: a stub React component library with [Tailwind CSS](https://tailwindcss.com/) shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+---
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+## 📸 Screenshots
 
-### Building packages/ui
+![SignUp page](https://github.com/user-attachments/assets/c6bb17e0-7219-471c-94be-1d4c09be6ecb)
+![Login Page](https://github.com/user-attachments/assets/886db0e4-9a29-425c-87dd-34a73eb80399)
+![dashboard](https://github.com/user-attachments/assets/bb09b7b7-b90a-4706-8aea-707f907b8f2b)
+![image](https://github.com/user-attachments/assets/a9e460c2-b52e-4ac2-b58d-5ddbf34a1f3a)
+![image](https://github.com/user-attachments/assets/ab8a90ef-1b5a-41cf-bdcc-eda830cad8b3)
+![image](https://github.com/user-attachments/assets/695d648b-034d-43bd-b72e-08bf14fb12c0)
+![AllTransactions](https://github.com/user-attachments/assets/b93b5d2c-267d-4ce9-a9e4-6f7a6c3d494d)
 
-This example is set up to produce compiled styles for `ui` components into the `dist` directory. The component `.tsx` files are consumed by the Next.js apps directly using `transpilePackages` in `next.config.ts`. This was chosen for several reasons:
 
-- Make sharing one `tailwind.config.ts` to apps and packages as easy as possible.
-- Make package compilation simple by only depending on the Next.js Compiler and `tailwindcss`.
-- Ensure Tailwind classes do not overwrite each other. The `ui` package uses a `ui-` prefix for it's classes.
-- Maintain clear package export boundaries.
 
-Another option is to consume `packages/ui` directly from source without building. If using this option, you will need to update the `tailwind.config.ts` in your apps to be aware of your package locations, so it can find all usages of the `tailwindcss` class names for CSS compilation.
 
-For example, in [tailwind.config.ts](packages/tailwind-config/tailwind.config.ts):
 
-```js
-  content: [
-    // app content
-    `src/**/*.{js,ts,jsx,tsx}`,
-    // include packages if not transpiling
-    "../../packages/ui/*.{js,ts,jsx,tsx}",
-  ],
-```
 
-If you choose this strategy, you can remove the `tailwindcss` and `autoprefixer` dependencies from the `ui` package.
 
-### Utilities
+---
 
-This Turborepo has some additional tools already setup for you:
+## 🛠️ Local Development Setup
 
-- [Tailwind CSS](https://tailwindcss.com/) for styles
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/rupixo.git
+cd rupixo
