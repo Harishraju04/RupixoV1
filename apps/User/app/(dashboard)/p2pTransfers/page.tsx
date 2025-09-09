@@ -13,7 +13,6 @@ export default async function P2PPage() {
         <div className="w-full">
           <SendFormComp />
         </div>
-
         {/* Pass initial history to client component */}
         <div className="w-full">
           <P2PhistoryComponent initialHistory={transactions} />
